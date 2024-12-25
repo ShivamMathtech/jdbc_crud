@@ -80,7 +80,24 @@ public class StudentAction {
 	  return status;
   }
   public String delete(String sid) {
-	  return "";
+	  try {
+		  Student std = Search(sid);
+		  if(std==null) {
+			  status ="notExisted";
+		  }else {
+			  int rowCount = st.executeUpdate("delete student where SID='"+sid+"'");
+			  if(rowCount==1) {
+				  status="success";
+			  }else {
+				  status="failure";
+			  }
+		  }
+		
+	} catch (Exception e) {
+		status ="failure";
+	    e.printStackTrace();
+	}
+	  return status;
   }
   
   

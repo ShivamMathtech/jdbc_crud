@@ -44,7 +44,7 @@ public class Test {
 			 sid = br.readLine();
 			 Student std = studentaction.Search(sid);
 			 if(std == null) {
-				 System.out.println("User is not exixted");
+				 System.out.println("User is not existed");
 			 }else {
 				 System.out.println("**********Student Details**********");
 				 System.out.println("Student id      "+std.getSid());
@@ -84,6 +84,16 @@ public class Test {
 			 }
 			 break;
 		 case 4:
+			 System.out.println("Enter the student id :");
+			 sid =br.readLine();
+			 status = studentaction.delete(sid);
+			 if(status.equals("success")) {
+				 System.out.println("Student deleted successfully");
+			 }if(status.equals("notExisted")) {
+				 System.out.println("Student are not Existed");
+			 }if(status.equals("failure")) {
+				 System.out.println("Failure in delete operation");
+			 }
 			 break;
 		 case 5:
 			 System.out.println("Thank you for using std app");
