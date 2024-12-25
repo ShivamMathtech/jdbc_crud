@@ -64,7 +64,20 @@ public class StudentAction {
 	  return std;
   }
   public String update(String sid, String sname,String saddr) {
-	  return "";
+	  try {
+		  int rowCount = st.executeUpdate("update student set SNAME ='"+sname+"',SADDR ='"+saddr+"' where sid='"+sid+"'");
+		  if(rowCount == 1) {
+			  status="success";
+		  }else {
+			  status ="failure";
+		  }
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		status ="failure";
+		e.printStackTrace();
+	}
+	  return status;
   }
   public String delete(String sid) {
 	  return "";

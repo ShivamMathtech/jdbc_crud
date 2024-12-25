@@ -54,6 +54,34 @@ public class Test {
 			 }
 			 break;
 		 case 3:
+			 System.out.println("Enter Student id : ");
+			 sid = br.readLine();
+			 std = studentaction.Search(sid);
+			 if(sid==null) {
+				 System.out.println("No student existed with this id "+sid);
+			 }else {
+				 System.out.println("********Student old Details**********");
+				 System.out.println("Student id      : "+std.getSid());
+				 System.out.println("Student name    : "+std.getSname());
+				 System.out.println("Student Address : "+std.getSaddr());
+				 System.out.println("*************************************");
+				 System.out.println("Enter new Name    :");
+				 String New_sname = br.readLine();
+				 System.out.println("Enter New Address :");
+				 String New_saddr= br.readLine();
+				 if(New_sname== null ||New_sname.equals("")) {
+					 New_sname=std.getSname();
+				 }
+				 if(New_saddr==null || New_saddr.equals("")) {
+					 New_saddr=std.getSaddr();
+				 }
+				 status = studentaction.update(sid, New_sname, New_saddr);
+				 if(status.equals("success")) {
+					 System.out.println("Data Updated successfully");
+				 }else {
+					 System.out.println("Something error");
+				 }
+			 }
 			 break;
 		 case 4:
 			 break;
